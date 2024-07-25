@@ -1,11 +1,16 @@
 package ex02.jpaTest;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Member {
@@ -17,17 +22,34 @@ public class Member {
 	@Column(name = "USERNAME")
 	private String username;
 	
-	/*
-	 * @Column(name = "TEAM_ID") private Long teamId;
-	 */
-	
+	/* private List<Member> members = new ArrayList<>(); */
 	
 	@ManyToOne
-	@JoinColumn(name="TEAM_ID")
+	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
 	private Team team;
 	
-	public Member() {
+	@OneToOne
+	@JoinColumn(name = "LOCKER_ID")
+	private Locker locker;
+	
+	@OneToMany(mappedBy="member")
+	private List<Product> products = new ArrayList<>();
+	
 		
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
+	public Locker getLocker() {
+		return locker;
+	}
+
+	public void setLocker(Locker locker) {
+		this.locker = locker;
 	}
 
 	public Long getId() {
@@ -46,13 +68,29 @@ public class Member {
 		this.username = username;
 	}
 
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
+	/**/
+	/*
+	 * @Column(name = "TEAM_ID") private Long teamId;
+	 */
 	
+	
+	/*
+	 * // 연관 관계의 주인
+	 * 
+	 * @ManyToOne
+	 * 
+	 * @JoinColumn(name="TEAM_ID") private Team team;
+	 * 
+	 * public Member() {
+	 * 
+	 * }
+	 * 
+	 * 
+	 * public Team getTeam() { return team; }
+	 * 
+	 * public void changeTeam(Team team) { this.team = team;
+	 * team.getMembers().add(this); }
+	 
+	 */
 	
 }

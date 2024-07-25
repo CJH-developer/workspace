@@ -5,11 +5,14 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import ex01.domain.Order;
+import ex01.domain.OrderItem;
+
 public class JpaMain {
 
 	public static void main(String[] args) {
 		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("hellos");
 		
 		EntityManager em = emf.createEntityManager();
 		

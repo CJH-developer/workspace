@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,7 +21,9 @@ public class Team {
 	private String name;
 	
 	// 일대다 맵핑에서 member의 team과 연결되어 있다라고 명시
-	@OneToMany(mappedBy = "team")
+	/* @OneToMany(mappedBy = "team") */
+	@OneToMany
+	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
 	private List<Member> members = new ArrayList<>();
 	
 	public Team() {
