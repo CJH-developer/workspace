@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceUnits;
 
 public class JpaMain {
 
@@ -22,13 +24,34 @@ public class JpaMain {
 		try {
 			
 			Member member = new Member();
-			member.setCreatedBy("kim");
-			member.setCreatedDate(LocalDateTime.now());
+			member.setUsername("hello");
 			
 			em.persist(member);
 			
 			em.flush();
 			em.clear();
+			
+			Member refMember = em.getReference(Member.class, member.getId());
+			System.out.println("refMember : " + refMember.getClass());
+			refMember.getUsername();
+			System.out.println("isLoaded : " + emf.getPersistenceUnitUtil().isLoaded(refMember));
+			
+			Member findMember = em.find(Member.class, member.getId());
+			System.out.println("FindMember : " + findMember.getClass());
+			
+			
+			
+			/*
+			 * em.close(); refMember.getUsername();
+			 */
+			
+			
+			/*
+			 * Member member = new Member(); member.setCreatedBy("kim");
+			 * member.setCreatedDate(LocalDateTime.now());
+			 * 
+			 * em.persist(member);
+			 */
 			
 			/*
 			 * Movie movie = new Movie(); movie.setDirector("movie감독1");

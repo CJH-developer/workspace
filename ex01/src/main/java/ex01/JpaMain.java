@@ -6,6 +6,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import ex01.domain.Book;
+import ex01.domain.Member;
 import ex01.domain.Order;
 import ex01.domain.OrderItem;
 
@@ -21,11 +22,10 @@ public class JpaMain {
 		tx.begin();
 		
 		try {
-			Book book = new Book();
-			book.setName("JPA");
-			book.setAuthor("홍길동");
-			em.persist(book);
-
+			
+			Member member = em.find(Member.class, 1L);
+			printMember(member);
+			em.persist(member);
 			tx.commit();
 		} catch (Exception e) {
 
@@ -34,6 +34,11 @@ public class JpaMain {
 			em.close();
 		}
 		emf.close();
+	}
+
+	private static void printMember(Member member) {
+		System.out.println(member.getName());
+		
 	}
 	
 }
