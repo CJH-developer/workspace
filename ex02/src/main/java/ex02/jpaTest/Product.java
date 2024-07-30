@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -15,9 +16,10 @@ public class Product {
 	private Long id;
 	
 	private String name;
-
+	
 	@OneToMany(mappedBy = "product")
-	private List<MemberProduct> memberproducts = new ArrayList<>();
+	private List<MemberProduct> memberProducts = new ArrayList<>();
+	
 	
 	public Long getId() {
 		return id;
@@ -34,6 +36,15 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public List<MemberProduct> getMemberproducts() {
+		return memberProducts;
+	}
+
+	public void setMemberproducts(List<MemberProduct> memberproducts) {
+		this.memberProducts = memberproducts;
+	}
+	
 	
 	
 }

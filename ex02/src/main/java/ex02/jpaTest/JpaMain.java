@@ -1,5 +1,6 @@
 package ex02.jpaTest;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -19,17 +20,35 @@ public class JpaMain {
 		tx.begin();
 
 		try {
-
+			
 			Member member = new Member();
-			member.setUsername("member1");
+			member.setCreatedBy("kim");
+			member.setCreatedDate(LocalDateTime.now());
 			
 			em.persist(member);
 			
-			Team team = new Team();
-			team.setName("teamA");
-			team.getMembers().add(member);
+			em.flush();
+			em.clear();
 			
-			em.persist(team);
+			/*
+			 * Movie movie = new Movie(); movie.setDirector("movie감독1");
+			 * movie.setActor("Movie배우1"); movie.setName("movie영화1"); movie.setPrice(15000);
+			 * em.persist(movie);
+			 * 
+			 * em.flush(); em.clear();
+			 * 
+			 * Movie findMoveId = em.find(Movie.class, movie.getId());
+			 * System.out.println(findMoveId.getId());
+			 */
+			/*
+			 * Member member = new Member(); member.setUsername("member1");
+			 * 
+			 * em.persist(member);
+			 * 
+			 * Team team = new Team(); team.setName("teamA"); team.getMembers().add(member);
+			 * 
+			 * em.persist(team);
+			 */
 
 			tx.commit();
 			/* member.setTeam(team); 이렇게 지정하면 JPA가 알아서 PK값을 FK값으로 지정 */

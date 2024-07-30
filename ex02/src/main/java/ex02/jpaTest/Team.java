@@ -11,7 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Team {
+public class Team extends BaseEntitiy{
 
 	@Id
 	@GeneratedValue
@@ -25,6 +25,8 @@ public class Team {
 	@OneToMany
 	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
 	private List<Member> members = new ArrayList<>();
+	
+	
 	
 	public Team() {
 		

@@ -1,5 +1,6 @@
 package ex02.jpaTest;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,12 +9,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Member {
+public class Member extends BaseEntitiy{
 
 	@Id @GeneratedValue
 	@Column(name="MEMBER_ID")
@@ -25,17 +27,28 @@ public class Member {
 	/* private List<Member> members = new ArrayList<>(); */
 	
 	@ManyToOne
-	@JoinColumn(name="TEAM_ID", insertable = false, updatable = false)
+	@JoinColumn(name="TEAM_ID")
 	private Team team;
 	
 	@OneToOne
 	@JoinColumn(name = "LOCKER_ID")
 	private Locker locker;
 	
-	@OneToMany(mappedBy="member")
-	private List<Product> products = new ArrayList<>();
+	@OneToMany(mappedBy = "member")
+	private List<MemberProduct> memberProducts = new ArrayList<>();
 	
 		
+
+	
+	
+	public List<MemberProduct> getMemberProducts() {
+		return memberProducts;
+	}
+
+	public void setMemberProducts(List<MemberProduct> memberProducts) {
+		this.memberProducts = memberProducts;
+	}
+
 	public Team getTeam() {
 		return team;
 	}

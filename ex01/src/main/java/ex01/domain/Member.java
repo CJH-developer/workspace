@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Member {
+public class Member extends BaseEntitiy{
 	
 	@Id @GeneratedValue
 	@Column(name="MEMBER_ID", insertable = false , updatable = false)
