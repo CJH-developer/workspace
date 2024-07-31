@@ -23,23 +23,52 @@ public class JpaMain {
 
 		try {
 			
-			Member member = new Member();
-			member.setUsername("hello");
+			Child child1 = new Child();
+			Child child2 = new Child();
 			
-			em.persist(member);
+			Parent parent = new Parent();
+			parent.addChild(child1);
+			parent.addChild(child2);
 			
+			em.persist(parent);
 			em.flush();
 			em.clear();
 			
-			Member refMember = em.getReference(Member.class, member.getId());
-			System.out.println("refMember : " + refMember.getClass());
-			refMember.getUsername();
-			System.out.println("isLoaded : " + emf.getPersistenceUnitUtil().isLoaded(refMember));
+			Parent findParent = em.find(Parent.class, parent.getId());
+			findParent.getChildList().remove(0);
 			
-			Member findMember = em.find(Member.class, member.getId());
-			System.out.println("FindMember : " + findMember.getClass());
+			/*
+			 * Team team = new Team(); team.setName("LazyTeam"); em.persist(team);
+			 * 
+			 * Member member= new Member(); member.setUsername("LazyTest");
+			 * member.setTeam(team); em.persist(member);
+			 * 
+			 * em.flush(); em.clear();
+			 * 
+			 * Member m = em.find(Member.class, member.getId()); System.out.println(" m = "
+			 * + m.getTeam().getClass());
+			 * 
+			 * System.out.println("======================="); m.getTeam().getName();
+			 * System.out.println("=======================");
+			 */
 			
 			
+			
+			/*
+			 * Member member = new Member(); member.setUsername("hello");
+			 * 
+			 * em.persist(member);
+			 * 
+			 * em.flush(); em.clear();
+			 * 
+			 * Member refMember = em.getReference(Member.class, member.getId());
+			 * System.out.println("refMember : " + refMember.getClass());
+			 * refMember.getUsername(); System.out.println("isLoaded : " +
+			 * emf.getPersistenceUnitUtil().isLoaded(refMember));
+			 * 
+			 * Member findMember = em.find(Member.class, member.getId());
+			 * System.out.println("FindMember : " + findMember.getClass());
+			 */
 			
 			/*
 			 * em.close(); refMember.getUsername();
