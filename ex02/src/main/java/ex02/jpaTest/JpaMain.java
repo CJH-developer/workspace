@@ -1,14 +1,11 @@
 package ex02.jpaTest;
 
-import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
-import javax.persistence.PersistenceUnits;
+
 
 public class JpaMain {
 
@@ -22,20 +19,40 @@ public class JpaMain {
 		tx.begin();
 
 		try {
+	
+			Address address = new Address("city", "street", "10000");
 			
-			Child child1 = new Child();
-			Child child2 = new Child();
+			Member member1 = new Member();
+			member1.setUsername("member1");
+//			member.setWorkAddress(new Address("city", "street", "10") );
+//			member.setWorkPeriod(new Period());
+			member1.setWorkAddress(address);
+			em.persist(member1);
 			
-			Parent parent = new Parent();
-			parent.addChild(child1);
-			parent.addChild(child2);
+			// 인스턴스 복사
+			Address copyAddress = new Address( address.getCity(), address.getStreet(), address.getZipcode() );
 			
-			em.persist(parent);
-			em.flush();
-			em.clear();
+			Member member2 = new Member();
+			member2.setUsername("member2");
+			// 복사한 인스턴스 값 추가
+			member2.setWorkAddress(copyAddress);
+			em.persist(member2);
 			
-			Parent findParent = em.find(Parent.class, parent.getId());
-			findParent.getChildList().remove(0);
+			member1.getWorkAddress().setCity("newCity");
+			
+			tx.commit();
+			
+			/*
+			 * Child child1 = new Child(); Child child2 = new Child();
+			 * 
+			 * Parent parent = new Parent(); parent.addChild(child1);
+			 * parent.addChild(child2);
+			 * 
+			 * em.persist(parent); em.flush(); em.clear();
+			 * 
+			 * Parent findParent = em.find(Parent.class, parent.getId());
+			 * findParent.getChildList().remove(0);
+			 */
 			
 			/*
 			 * Team team = new Team(); team.setName("LazyTeam"); em.persist(team);
@@ -102,7 +119,7 @@ public class JpaMain {
 			 * em.persist(team);
 			 */
 
-			tx.commit();
+			
 			/* member.setTeam(team); 이렇게 지정하면 JPA가 알아서 PK값을 FK값으로 지정 */
 			// 외래키 식별자를 직접 다룬다.
 			/* member.setTeamId(team.getId()); */

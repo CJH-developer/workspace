@@ -1,7 +1,12 @@
 package ex02.jpaTest;
 
 
+import java.time.LocalDateTime;
+
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -11,7 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Member extends BaseEntitiy{
+public class Member{
 
 	@Id @GeneratedValue
 	@Column(name="MEMBER_ID")
@@ -20,11 +25,65 @@ public class Member extends BaseEntitiy{
 	@Column(name = "USERNAME")
 	private String username;
 	
-	// 프록시 객체 조회 ( Member 클래스만 조회 )
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name="TEAM_ID")
-	private Team team;
+	@Embedded
+	private Period workPeriod;
+	@Embedded
+	private Address workAddress;
 	
+	@Embedded
+	@AttributeOverrides({ @AttributeOverride(name = "city", column = @Column(name = "HOME_CITY")),
+								      @AttributeOverride(name="street", column = @Column(name = "HOME_STREET")),
+								      @AttributeOverride(name="zipcode", column = @Column(name = "HOME_ZIPCODE"))
+	})
+	private Address homeAddress;
+	
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public Period getWorkPeriod() {
+		return workPeriod;
+	}
+	public void setWorkPeriod(Period workPeriod) {
+		this.workPeriod = workPeriod;
+	}
+	public Address getWorkAddress() {
+		return workAddress;
+	}
+	public void setWorkAddress(Address workAddress) {
+		this.workAddress = workAddress;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+// 프록시 객체 조회 ( Member 클래스만 조회 )
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name="TEAM_ID")
+//	private Team team;
+
 	/*
 	 * @OneToOne
 	 * 
@@ -45,13 +104,13 @@ public class Member extends BaseEntitiy{
 	 * this.memberProducts = memberProducts; }
 	 */
 
-	public Team getTeam() {
-		return team;
-	}
-
-	public void setTeam(Team team) {
-		this.team = team;
-	}
+//	public Team getTeam() {
+//		return team;
+//	}
+//
+//	public void setTeam(Team team) {
+//		this.team = team;
+//	}
 
 	/*
 	 * public Locker getLocker() { return locker; }
@@ -59,21 +118,21 @@ public class Member extends BaseEntitiy{
 	 * public void setLocker(Locker locker) { this.locker = locker; }
 	 */
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
+//	public Long getId() {
+//		return id;
+//	}
+//
+//	public void setId(Long id) {
+//		this.id = id;
+//	}
+//
+//	public String getUsername() {
+//		return username;
+//	}
+//
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
 
 	/**/
 	/*

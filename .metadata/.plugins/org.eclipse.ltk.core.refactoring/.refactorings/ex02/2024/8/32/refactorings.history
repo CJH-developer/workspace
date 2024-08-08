@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;ex02.jpaTest.address&apos; to &apos;Address&apos;&#x0D;&#x0A;- Original project: &apos;ex02&apos;&#x0D;&#x0A;- Original element: &apos;ex02.jpaTest.address&apos;&#x0D;&#x0A;- Renamed element: &apos;ex02.jpaTest.Address&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;address&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;ex02.jpaTest{address.java[address" matchStrategy="1" name="Address" qualified="false" references="true" similarDeclarations="false" stamp="1723083375053" textual="false" version="1.0"/>
+</session>
