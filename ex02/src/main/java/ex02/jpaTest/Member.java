@@ -2,10 +2,17 @@ package ex02.jpaTest;
 
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
+import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +21,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Member{
@@ -27,41 +35,74 @@ public class Member{
 	
 	@Embedded
 	private Period workPeriod;
-	@Embedded
-	private Address workAddress;
 	
 	@Embedded
-	@AttributeOverrides({ @AttributeOverride(name = "city", column = @Column(name = "HOME_CITY")),
-								      @AttributeOverride(name="street", column = @Column(name = "HOME_STREET")),
-								      @AttributeOverride(name="zipcode", column = @Column(name = "HOME_ZIPCODE"))
-	})
 	private Address homeAddress;
 	
+//	@ElementCollection
+//	@CollectionTable(name="FAVORITE_FOOD", joinColumns = @JoinColumn(name="MEMBER_ID") )
+	@Column(name="FOOD_NAME")
+	private Set<String> favoriteFoods = new HashSet<>();
 	
+//	@ElementCollection
+//	@CollectionTable(name="ADDRESS", joinColumns = @JoinColumn(name="MEMBER_ID") )
+//  private List<Address> addressHistory = new ArrayList<>();
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name="MEMBER_ID")
+	private List<AddressEntity> addressHistory = new ArrayList<>();
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getUsername() {
 		return username;
 	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}
+
 	public Period getWorkPeriod() {
 		return workPeriod;
 	}
+
 	public void setWorkPeriod(Period workPeriod) {
 		this.workPeriod = workPeriod;
 	}
-	public Address getWorkAddress() {
-		return workAddress;
+
+	public Address getHomeAddress() {
+		return homeAddress;
 	}
-	public void setWorkAddress(Address workAddress) {
-		this.workAddress = workAddress;
+
+	public void setHomeAddress(Address homeAddress) {
+		this.homeAddress = homeAddress;
 	}
+
+	public Set<String> getFavoriteFoods() {
+		return favoriteFoods;
+	}
+
+	public void setFavoriteFoods(Set<String> favoriteFoods) {
+		this.favoriteFoods = favoriteFoods;
+	}
+
+	public List<AddressEntity> getAddressHistory() {
+		return addressHistory;
+	}
+
+	public void setAddressHistory(List<AddressEntity> addressHistory) {
+		this.addressHistory = addressHistory;
+	}
+
+
+
+	
+
 	
 	
 	
@@ -73,7 +114,12 @@ public class Member{
 	
 	
 	
-	
+//	@Embedded
+//	@AttributeOverrides({ @AttributeOverride(name = "city", column = @Column(name = "HOME_CITY")),
+//								      @AttributeOverride(name="street", column = @Column(name = "HOME_STREET")),
+//								      @AttributeOverride(name="zipcode", column = @Column(name = "HOME_ZIPCODE"))
+//	})
+//	private Address homeAddress;
 	
 	
 	

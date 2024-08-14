@@ -20,28 +20,52 @@ public class JpaMain {
 
 		try {
 	
-			Address address = new Address("city", "street", "10000");
-			
-			Member member1 = new Member();
-			member1.setUsername("member1");
+					Member member = new Member();
+					member.setUsername("test1");
+					member.setHomeAddress(new Address("home", "street", "10000"));
+					
+					member.getFavoriteFoods().add("치킨1");
+					member.getFavoriteFoods().add("치킨2");
+					member.getFavoriteFoods().add("치킨3");
+					
+					member.getAddressHistory().add(new AddressEntity("old1", "street1", "20000"));
+					member.getAddressHistory().add(new AddressEntity("old2", "street2", "20000"));
+					
+					em.persist(member);
+					em.flush();
+					em.clear();
+					
+					System.out.println("=======START========");
+					Member findMember = em.find(Member.class, member.getId());
+					
+//					findMember.setHomeAddress(new Address("newCity", "newStreet", "30000") );
+//					
+//					findMember.getFavoriteFoods().remove("치킨1");
+//					findMember.getFavoriteFoods().add("한식");
+//					
+//					findMember.getAddressHistory().remove(new AddressEntity("old1", "street1", "20000") );
+//					findMember.getAddressHistory().add(new AddressEntity("newCity1", "street1", "20000") );
+					
+					tx.commit();
+//			Address address = new Address("city", "street", "10000");
+//			
+//			Member member1 = new Member();
+//			member1.setUsername("member1");
 //			member.setWorkAddress(new Address("city", "street", "10") );
 //			member.setWorkPeriod(new Period());
-			member1.setWorkAddress(address);
-			em.persist(member1);
-			
-			// 인스턴스 복사
-			Address copyAddress = new Address( address.getCity(), address.getStreet(), address.getZipcode() );
-			
-			Member member2 = new Member();
-			member2.setUsername("member2");
-			// 복사한 인스턴스 값 추가
-			member2.setWorkAddress(copyAddress);
-			em.persist(member2);
-			
-			member1.getWorkAddress().setCity("newCity");
-			
-			tx.commit();
-			
+//			member1.setWorkAddress(address);
+//			em.persist(member1);
+//			
+//			// 인스턴스 복사
+//			Address copyAddress = new Address( address.getCity(), address.getStreet(), address.getZipcode() );
+//			
+//			Member member2 = new Member();
+//			member2.setUsername("member2");
+//			// 복사한 인스턴스 값 추가
+//			member2.setWorkAddress(copyAddress);
+//			em.persist(member2);
+//			
+//			member1.getWorkAddress().setCity("newCity");
 			/*
 			 * Child child1 = new Child(); Child child2 = new Child();
 			 * 
