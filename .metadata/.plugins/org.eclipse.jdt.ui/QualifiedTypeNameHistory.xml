@@ -36,8 +36,6 @@
     <fullyQualifiedTypeName name="ex02.jpaTest.Parent"/>
     <fullyQualifiedTypeName name="javax.persistence.FetchType"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
-    <fullyQualifiedTypeName name="javax.persistence.Embeddable"/>
-    <fullyQualifiedTypeName name="javax.persistence.Embedded"/>
     <fullyQualifiedTypeName name="javax.persistence.AttributeOverrides"/>
     <fullyQualifiedTypeName name="javax.persistence.AttributeOverride"/>
     <fullyQualifiedTypeName name="java.util.Objects"/>
@@ -46,14 +44,18 @@
     <fullyQualifiedTypeName name="javax.persistence.ElementCollection"/>
     <fullyQualifiedTypeName name="javax.persistence.CollectionTable"/>
     <fullyQualifiedTypeName name="ex02.jpaTest.Address"/>
-    <fullyQualifiedTypeName name="javax.persistence.Column"/>
     <fullyQualifiedTypeName name="javax.persistence.OneToMany"/>
     <fullyQualifiedTypeName name="javax.persistence.JoinColumn"/>
     <fullyQualifiedTypeName name="javax.persistence.Entity"/>
     <fullyQualifiedTypeName name="javax.persistence.Id"/>
     <fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
-    <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
     <fullyQualifiedTypeName name="javax.persistence.Table"/>
     <fullyQualifiedTypeName name="ex02.jpaTest.AddressEntity"/>
+    <fullyQualifiedTypeName name="javax.persistence.Embeddable"/>
+    <fullyQualifiedTypeName name="ex01.domain.Address"/>
+    <fullyQualifiedTypeName name="javax.persistence.Embedded"/>
+    <fullyQualifiedTypeName name="ex01.domain.DeliveryStatus"/>
+    <fullyQualifiedTypeName name="javax.persistence.Column"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
 </qualifiedTypeNameHistroy>

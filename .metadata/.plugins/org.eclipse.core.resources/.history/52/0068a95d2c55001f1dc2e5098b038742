@@ -1,7 +1,0 @@
-package ex02.jpaTest;
-
-public class Address {
-	private String city;
-	private String street;
-	private String zipcode;
-}
