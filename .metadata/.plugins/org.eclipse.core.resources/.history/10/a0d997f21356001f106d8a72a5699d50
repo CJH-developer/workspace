@@ -1,9 +1,0 @@
-package ex02.jpaTest;
-
-import javax.persistence.Entity;
-
-@Entity
-public class AddressEntity {
-
-	
-}

@@ -26,15 +26,21 @@
 	</section>
 	<section name="Maven2ProjectWizardArchifactPage">
 		<list key="package">
-			<item value="com.project.ex02"/>
-			<item value="com.project.ex01"/>
+			<item value="project.ex07"/>
+			<item value="project.ex06"/>
+			<item value="project.ex05"/>
+			<item value="project.ex04"/>
+			<item value="project.ex03"/>
 		</list>
 		<list key="groupId">
-			<item value="com.project"/>
+			<item value="project"/>
 		</list>
 		<list key="artifactId">
-			<item value="ex02"/>
-			<item value="ex01"/>
+			<item value="ex07"/>
+			<item value="ex06"/>
+			<item value="ex05"/>
+			<item value="ex04"/>
+			<item value="ex03"/>
 		</list>
 		<list key="projectNameTemplate">
 			<item value="[artifactId]"/>
