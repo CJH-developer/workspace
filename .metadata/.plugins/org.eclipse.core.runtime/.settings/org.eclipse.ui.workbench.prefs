@@ -13,6 +13,7 @@ org.eclipse.egit.ui.CommitMessageFont=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|
 org.eclipse.egit.ui.DiffHeadlineFont=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|34|Microsoft YaHei UI;
 org.eclipse.jdt.internal.ui.compare.JavaMergeViewer=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|34|Microsoft YaHei UI;
 org.eclipse.jdt.internal.ui.compare.PropertiesFileMergeViewer=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|34|Microsoft YaHei UI;
+org.eclipse.jdt.ui.ColoredLabels.match_highlight=73,83,90
 org.eclipse.jdt.ui.PropertiesFileEditor.textfont=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|34|Microsoft YaHei UI;
 org.eclipse.jdt.ui.editors.textfont=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|34|Microsoft YaHei UI;
 org.eclipse.jface.textfont=1|Microsoft YaHei UI|12.0|0|WINDOWS|1|-16|0|0|0|400|0|0|0|0|3|2|1|34|Microsoft YaHei UI;
